@@ -73,7 +73,9 @@ public class MainActivity extends Activity implements Endpoints.ResponseInterfac
             requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(endpoints.getUsers(this));
         } else {
-            updateList(endpoints.toListUser(usersString));
+            List<User> users = endpoints.toListUser(usersString);
+            users_all.addAll(users);
+            updateList(users);
             progressBar.setVisibility(View.GONE);
         }
 
